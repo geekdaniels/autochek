@@ -31,7 +31,7 @@ const Home: NextPage<{ brands: MakeList[]; page: number; cars: Result[] }> = ({
         <h3 className="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
           <span>O</span>ur <span>P</span>opular <span>B</span>rands
         </h3>
-        {/* <div className="content">
+        <div className="content">
           {brands.map((brand, index) => (
             <a href="/ng/cars-for-sale?body_type_id=9" key={index}>
               <div className="body-type">
@@ -48,7 +48,7 @@ const Home: NextPage<{ brands: MakeList[]; page: number; cars: Result[] }> = ({
               </div>
             </a>
           ))}
-        </div> */}
+        </div>
       </div>
 
       <div className="ads-grid py-sm-5 py-4">
@@ -140,11 +140,10 @@ const Home: NextPage<{ brands: MakeList[]; page: number; cars: Result[] }> = ({
 export async function getServerSideProps({ query }: any) {
   const page = query.page || 1;
 
-  // Fetch data from external API
-  // const res = await fetch(
-  //   `https://api.staging.myautochek.com/v1/inventory/make?popular=true`
-  // );
-  // const { makeList }: GetPopularBrands = await res.json();
+  const res = await fetch(
+    `https://api.staging.myautochek.com/v1/inventory/make?popular=true`
+  );
+  const { makeList }: GetPopularBrands = await res.json();
 
   const carList = await fetch(
     `https://api-prod.autochek.africa/v1/inventory/car/search?page_number=${page}&page_size=20`
@@ -153,7 +152,7 @@ export async function getServerSideProps({ query }: any) {
 
   return {
     props: {
-      // brands: makeList,
+      brands: makeList,
       cars: result,
       page: page
     }
