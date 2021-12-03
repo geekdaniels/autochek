@@ -3,7 +3,7 @@ import millify from "millify";
 import Image from "next/image";
 import ReactStars from "react-rating-stars-component";
 import { GetServerSideProps } from "next";
-import { GetCars, CarDetails, CarMediaList } from "../../types";
+import { CarDetails, CarMediaList } from "../../types";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -370,35 +370,67 @@ function carDetails({
                 </ul> */}
               </div>
               <div className="product-single-w3l">
-                <p className="my-3">
-                  <i className="far fa-hand-point-right mr-2"></i>
-                  Free standard installation within
-                  <label>48 hours</label> of delivery
-                </p>
-                <ul>
-                  <li className="mb-1">
-                    Frost Free Double Door: Auto defrost to stop ice-build up
-                  </li>
-                  <li className="mb-1">
-                    Capacity 260 L: Suitable for families with 2 to 3 members
-                  </li>
-                  <li className="mb-1">Energy Rating: 3 Star</li>
-                  <li className="mb-1">
-                    Warranty: 1 year warranty on product and 10 years warranty
-                    on compressor
-                  </li>
-                  <li className="mb-1">
-                    Shelf Type: Toughened Glass to withstand the weight of
-                    heaviest vessels
-                  </li>
-                  <li className="mb-1">
-                    Inverter Compressor: Energy efficient, less noise & more
-                    durable
-                  </li>
-                  <li className="mb-1">
-                    Also included in the box: User manual, Warranty card
-                  </li>
-                </ul>
+                <div className="vehicle-description-container car-detail-section">
+                  <div className="section-title">Vehicle Desciption</div>
+                  <div className="description-items">
+                    <div>
+                      <span className="title">Rating</span>
+                      <span className="value text-capitalize">
+                        <ReactStars
+                          value={car.gradeScore}
+                          size={20}
+                          activeColor="#ffd700"
+                          edit="false"
+                        />
+                      </span>
+                    </div>
+                    <div>
+                      <span className="title">Engine Type</span>
+                      <span className="value text-capitalize">
+                        {car.engineType}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="title">Location</span>
+                      <span className="value text-capitalize">
+                        {car.city} - {car.state}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="title">Fuel Type</span>
+                      <span className="value text-capitalize">
+                        {car.fuelType}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="title">Interior color</span>
+                      <span className="value text-capitalize">
+                        {car.interiorColor}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="title">Exterior color</span>
+                      <span className="value text-capitalize">
+                        {car.exteriorColor}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="title">VIN</span>
+                      <span className="value text-capitalize">{car.vin}</span>
+                    </div>
+                    <div>
+                      <span className="title">Vehicle ID</span>
+                      <span className="value"> {car.id}</span>
+                    </div>
+                    <div>
+                      <span className="title">Inspected By</span>
+                      <span className="value">
+                        {" "}
+                        {car.inspectorDetails.inspectorFullName}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -131,7 +131,7 @@ const Home: NextPage<{ brands: MakeList[]; page: number; cars: Result[] }> = ({
                       <button
                         className="page-link"
                         aria-label="Next"
-                        onClick={() => pageNumClick(parseInt(page) + 1)}
+                        onClick={() => pageNumClick(page + 1)}
                       >
                         <span aria-hidden="true">&raquo;</span>
                         <span className="sr-only">Next</span>
