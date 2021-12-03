@@ -56,11 +56,7 @@ function carDetails({
               <h3 className="mb-3">{car.carName}</h3>
               <p className="mb-3">
                 <span className="item_price">
-                  ₦
-                  {millify(car.marketplacePrice, {
-                    precision: 6,
-                    decimalSeparator: ","
-                  })}
+                  ₦{millify(car.marketplacePrice)}
                 </span>
                 <del className="mx-2 font-weight-light">
                   ₦{millify(car.marketplaceOldPrice)}
