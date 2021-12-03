@@ -402,15 +402,28 @@ function carDetails({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Fetch data from external API
-  const res = await fetch(
-    `https://api-prod.autochek.africa/v1/inventory/car/${context.query.id}`
-  );
-  const data = await res.json();
+  // const res = await fetch(
+  //   `https://api-prod.autochek.africa/v1/inventory/car/${context.query.id}`
+  // );
+  // const data = await res.json();
 
-  const carMedia = await fetch(
-    `https://api-prod.autochek.africa/v1/inventory/car_media?carId=${context.query.id}`
-  );
-  const { carMediaList } = await carMedia.json();
+  // const carMedia = await fetch(
+  //   `https://api-prod.autochek.africa/v1/inventory/car_media?carId=${context.query.id}`
+  // );
+  // const { carMediaList } = await carMedia.json();
+
+  const [dataRes, carMediaRes] = await Promise.all([
+    fetch(
+      `https://api-prod.autochek.africa/v1/inventory/car/${context.query.id}`
+    ),
+    fetch(
+      `https://api-prod.autochek.africa/v1/inventory/car_media?carId=${context.query.id}`
+    )
+  ]);
+  const [data, { carMediaList }] = await Promise.all([
+    dataRes.json(),
+    carMediaRes.json()
+  ]);
 
   // Pass data to the page via props
   return {
