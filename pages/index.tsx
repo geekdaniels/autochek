@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Summer from "../images/image1.png";
 import { GetPopularBrands, MakeList, GetCars, Result } from "../types";
 import { useRouter } from "next/dist/client/router";
 
@@ -107,31 +106,21 @@ const Home: NextPage<{ brands: MakeList[]; page: number; cars: Result[] }> = ({
                 <nav aria-label="Page navigation example">
                   <ul className="pagination">
                     <li className="page-item">
-                      <a className="page-link" href="#" aria-label="Previous">
+                      <button
+                        className="page-link"
+                        onClick={() => pageNumClick(Number(page) - 1)}
+                        aria-label="Previous"
+                      >
                         <span aria-hidden="true">&laquo;</span>
                         <span className="sr-only">Previous</span>
-                      </a>
+                      </button>
                     </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        1
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        2
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        {page}
-                      </a>
-                    </li>
+
                     <li className="page-item">
                       <button
                         className="page-link"
                         aria-label="Next"
-                        onClick={() => pageNumClick(page + 1)}
+                        onClick={() => pageNumClick(Number(page) + 1)}
                       >
                         <span aria-hidden="true">&raquo;</span>
                         <span className="sr-only">Next</span>
@@ -139,22 +128,6 @@ const Home: NextPage<{ brands: MakeList[]; page: number; cars: Result[] }> = ({
                     </li>
                   </ul>
                 </nav>
-
-                <div className="product-sec1 product-sec2 px-sm-5 px-3">
-                  <div className="row">
-                    <h3 className="col-md-4 effect-bg">Summer Carnival</h3>
-                    <p className="w3l-nut-middle">Get Extra 10% Off</p>
-                    <div className="col-md-8 bg-right-nut">
-                      {/* <img src="images/image1.png" alt="" /> */}
-                      <Image
-                        src={Summer}
-                        alt="Get Extra 10% Off"
-                        width="600"
-                        height="400"
-                      />
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

@@ -50,60 +50,6 @@ function carDetails({
                   </Slider>
                 </div>
               </div>
-              <div className="vehicle-description-container car-detail-section">
-                <div className="section-title">Vehicle Desciption</div>
-                <div className="description-items">
-                  <div>
-                    <span className="title">Rating</span>
-                    <span className="value text-capitalize">
-                      <ReactStars
-                        value={car.gradeScore}
-                        size={20}
-                        activeColor="#ffd700"
-                        edit="false"
-                      />
-                    </span>
-                  </div>
-                  <div>
-                    <span className="title">Engine Type</span>
-                    <span className="value text-capitalize">
-                      {car.engineType}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="title">Location</span>
-                    <span className="value text-capitalize">
-                      {car.city} - {car.state}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="title">Fuel Type</span>
-                    <span className="value text-capitalize">
-                      {car.fuelType}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="title">Interior color</span>
-                    <span className="value text-capitalize">
-                      {car.interiorColor}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="title">Exterior color</span>
-                    <span className="value text-capitalize">
-                      {car.exteriorColor}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="title">VIN</span>
-                    <span className="value text-capitalize">{car.vin}</span>
-                  </div>
-                  <div>
-                    <span className="title">Vehicle ID</span>
-                    <span className="value"> {car.id}</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div className="col-lg-7 single-right-left simpleCart_shelfItem">
@@ -364,11 +310,7 @@ function carDetails({
                   </div>
                 </div>
               </div>
-              <div className="single-infoagile mt-3">
-                {/* <ul>
-                  <li className="mb-3">Cash on Delivery Eligible.</li>
-                </ul> */}
-              </div>
+              <div className="single-infoagile mt-3"></div>
               <div className="product-single-w3l">
                 <div className="vehicle-description-container car-detail-section">
                   <div className="section-title">Vehicle Desciption</div>
@@ -422,8 +364,30 @@ function carDetails({
                       <span className="title">Vehicle ID</span>
                       <span className="value"> {car.id}</span>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="product-single-w3l">
+                <div className="vehicle-description-container car-detail-section">
+                  <div className="section-title">Damage Inspection</div>
+
+                  <div className="description-items">
+                    {car.damageMedia.map((item, index) => (
+                      <div key={index}>
+                        <span className="title text-capitalize">
+                          {item.name}
+                        </span>
+                        <span className="value text-capitalize">
+                          {item.comment}
+                        </span>
+                      </div>
+                    ))}
+
                     <div>
-                      <span className="title">Inspected By</span>
+                      <span className="title text-uppercase font-weight-bold">
+                        Inspection By
+                      </span>
                       <span className="value">
                         {" "}
                         {car.inspectorDetails.inspectorFullName}

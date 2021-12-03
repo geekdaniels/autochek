@@ -92,3 +92,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.slick-prev {
+    left: 15px !important;
+    z-index: 5;
+}
+
+.slick-next {
+    right: 15px !important;
+    ;
+}
